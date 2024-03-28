@@ -118,14 +118,7 @@ C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.
 C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
-C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
@@ -185,3 +178,6 @@ C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.
 C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Humanizer.dll
+C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Supreme\source\repos\AuditNow\auditnow-api\AuditNow.Api\bin\Debug\net8.0\Mono.TextTemplating.dll

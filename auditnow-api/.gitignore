@@ -1,0 +1,15 @@
+.vs
+.vscode
+.suo
+bin
+obj
+v17
+v16
+AuditNow.Api/obj/
+AuditNow.Api/bin/
+AuditNow.Core/obj/
+AuditNow.Core/bin/
+AuditNow.Data/obj/
+AuditNow.Data/bin/
+AuditNow.Services/obj/
+AuditNow.Services/bin/

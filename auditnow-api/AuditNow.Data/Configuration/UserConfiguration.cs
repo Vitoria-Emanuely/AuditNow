@@ -30,7 +30,7 @@ namespace AuditNow.Data.Configuration
 
             builder
                 .Property(m => m.Password)
-                .HasMaxLength(100);
+                .HasMaxLength(50);
 
             builder
                 .Property(m => m.CreationUserId)

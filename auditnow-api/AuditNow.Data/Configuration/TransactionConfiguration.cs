@@ -37,7 +37,15 @@ namespace AuditNow.Data.Configuration
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
+                .Property(m => m.CreationUserId)
+                .IsRequired();
+
+            builder
                 .Property(m => m.CreationDate)
+                .IsRequired();
+
+            builder
+                .Property(m => m.ModificationUserId)
                 .IsRequired();
 
             builder

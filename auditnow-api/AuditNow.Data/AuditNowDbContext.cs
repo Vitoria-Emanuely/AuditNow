@@ -23,6 +23,8 @@ namespace AuditNow.Data
         {
             builder.ApplyConfiguration(new TransactionConfiguration());
 
+            builder.ApplyConfiguration(new UserConfiguration());
+
         }
 
 
