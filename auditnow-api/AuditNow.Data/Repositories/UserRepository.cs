@@ -20,7 +20,7 @@ namespace AuditNow.Data.Repositories
             get { return Context as AuditNowDbContext; }
         }
 
-        public User GetUserById(int userId, int? companyId, bool? isActive)
+        public User GetUserById(int userId, bool? isActive)
         {
             IQueryable<User> query = AuditNowDbContext.TbUser;
 

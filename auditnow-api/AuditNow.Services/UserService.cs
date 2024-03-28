@@ -19,11 +19,11 @@ namespace AuditNow.Services
             this._unitOfWork = unitOfWork;
         }
 
-        public ReturnObject<User> GetUserById(int userId, bool? isActive, int? requestUserCompanyId)
+        public ReturnObject<User> GetUserById(int userId, bool? isActive)
         {
             ReturnObject<User> ret = new ReturnObject<User>();
 
-            User user = _unitOfWork.TbUser.GetUserById(userId, requestUserCompanyId, isActive);
+            User user = _unitOfWork.TbUser.GetUserById(userId, isActive);
             if (user == null)
             {
                 ret.IsSuccessful = false;
@@ -33,6 +33,21 @@ namespace AuditNow.Services
 
             ret.IsSuccessful = true;
             ret.Data = new List<User> { user };
+
+            return ret;
+        }
+
+
+        public async Task<ReturnObject<User>> CreateUser(User newUser)
+        {
+            ReturnObject<User> ret = new ReturnObject<User>();
+
+            await _unitOfWork.TbUser.AddAsync(newUser);
+            await _unitOfWork.CommitAsync();
+
+            ret.IsSuccessful = true;
+            ret.Message = "Usuário criado com sucesso";
+            ret.Data = new List<User> { newUser };
 
             return ret;
         }

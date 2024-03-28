@@ -46,13 +46,13 @@ namespace AuditNow.Api
 
                 c.DocInclusionPredicate((docName, description) => true);
 
-                //c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
-                //{
-                //    Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer [token]\"",
-                //    Name = "Authorization",
-                //    In = ParameterLocation.Header,
-                //    Type = SecuritySchemeType.ApiKey
-                //});
+                c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer [token]\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
 
                 // Add this filter as well.
                 c.OperationFilter<SecurityRequirementsOperationFilter>();

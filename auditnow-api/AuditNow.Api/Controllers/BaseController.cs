@@ -30,7 +30,7 @@ namespace AuditNow.Api.Controllers
                 if(identity.FindFirst("UserId") != null)
                 {
                     int userId = Convert.ToInt32(identity.FindFirst("UserId").Value);
-                    ReturnObject<User> ret = _userService.GetUserById(userId, true, null);
+                    ReturnObject<User> ret = _userService.GetUserById(userId, true);
                     if (ret.IsSuccessful == true)
                     {
                         requestUser = ret.Data.First();
