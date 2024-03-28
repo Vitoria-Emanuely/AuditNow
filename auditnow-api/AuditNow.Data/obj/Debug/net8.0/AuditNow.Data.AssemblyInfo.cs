@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AuditNow.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c41318192dce2cafe2f3cec25644f3fb5272d1e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c5ae71c3d76a5b6b3fc9fa6bf6afd27bd6b7bea")]
 [assembly: System.Reflection.AssemblyProductAttribute("AuditNow.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AuditNow.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

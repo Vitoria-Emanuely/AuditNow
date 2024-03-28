@@ -6,6 +6,10 @@ using AuditNow.Data;
 using AuditNow.Core;
 using AuditNow.Core.Services;
 using AuditNow.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
 #endregion
 
 namespace AuditNow.Api
@@ -23,9 +27,30 @@ namespace AuditNow.Api
         public IConfiguration Configuration { get; }
 
 
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)  
         {
             services.AddHttpContextAccessor();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.IncludeErrorDetails = true;
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = Configuration["Authentication:Issuer"],
+
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["Authentication:Audience"],
+
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:SecretKey"])),
+
+                    RequireExpirationTime = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
 
             services.AddControllers();
 
@@ -87,7 +112,7 @@ namespace AuditNow.Api
 
             app.UseCors("PolicyCors");
 
-            app.UseAuthentication();
+            app.UseAuthentication   ();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

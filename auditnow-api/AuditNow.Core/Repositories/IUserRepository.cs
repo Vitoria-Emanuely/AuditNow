@@ -8,5 +8,7 @@ namespace AuditNow.Core.Repositories
     {
         User GetUserById(int userId, bool? isActive);
 
+        User GetUserByLogin(string email, string password);
+
     }
 }

@@ -32,5 +32,11 @@ namespace AuditNow.Data.Repositories
             return query.FirstOrDefault();
         }
 
+
+        public User GetUserByLogin(string email, string password)
+        {
+            return AuditNowDbContext.TbUser.Where(m => m.Email == email && m.Password == password && m.IsActive == true).FirstOrDefault();
+        }
+
     }
 }

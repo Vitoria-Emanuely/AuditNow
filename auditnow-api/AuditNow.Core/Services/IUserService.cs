@@ -12,6 +12,7 @@ namespace AuditNow.Core.Services
 
         Task<ReturnObject<User>> CreateUser(User newUser);
 
+        Task<ReturnObject<User>> Login(string email, string password);
 
     }
 }

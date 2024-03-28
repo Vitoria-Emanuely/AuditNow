@@ -3,6 +3,8 @@ using AuditNow.Core;
 using AuditNow.Core.Models.ValueObjects;
 using AuditNow.Core.Models;
 using AuditNow.Core.Services;
+using AuditNow.Core.Common;
+using Microsoft.Extensions.Configuration;
 #endregion
 
 namespace AuditNow.Services
@@ -12,11 +14,13 @@ namespace AuditNow.Services
 
 
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IConfiguration _config;
 
 
-        public UserService(IUnitOfWork unitOfWork)
+        public UserService(IUnitOfWork unitOfWork, IConfiguration config)
         {
             this._unitOfWork = unitOfWork;
+            _config = config;
         }
 
         public ReturnObject<User> GetUserById(int userId, bool? isActive)
@@ -50,6 +54,39 @@ namespace AuditNow.Services
             ret.Data = new List<User> { newUser };
 
             return ret;
+        }
+
+
+        public async Task<ReturnObject<User>> Login(string email, string password)
+        {
+            ReturnObject<User> ret = new ReturnObject<User>();
+
+            string encryptedPassword = new Cryptography().Encrypt(password);
+
+            User user = _unitOfWork.TbUser.GetUserByLogin(email, encryptedPassword);
+            if (user == null)
+            {
+                ret.IsSuccessful = false;
+                ret.Message = "Dados inválidos do usuário";
+                return ret;
+            }
+
+            user.JwtToken = new TokenManager().GetToken(user, _config);
+
+            await UpdateUserLastAccess(user, DateTime.UtcNow);
+
+            ret.IsSuccessful = true;
+            ret.Data = new List<User> { user };
+
+            return ret;
+        }
+
+
+        private async Task UpdateUserLastAccess(User userToBeUpdated, DateTime lastAccessDate)
+        {
+            userToBeUpdated.LastAccessDate = lastAccessDate;
+
+            await _unitOfWork.CommitAsync();
         }
 
     }
