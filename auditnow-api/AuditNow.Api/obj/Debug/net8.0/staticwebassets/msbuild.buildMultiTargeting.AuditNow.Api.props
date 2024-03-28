@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AuditNow.Api.props" />
+</Project>

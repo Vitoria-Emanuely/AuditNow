@@ -1,0 +1,6 @@
+@AuditNow.Api_HostAddress = http://localhost:5186
+
+GET {{AuditNow.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

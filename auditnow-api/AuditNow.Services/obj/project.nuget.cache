@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "ni8JQFj+DKrVU5X4+yjBT8IN515MAqY80weZZWRnISVpQlrnjzPrfgB0swln6SpC1XhjoMQXcHn8z1e4SGMeEw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Supreme\\source\\repos\\AuditNow\\auditnow-api\\AuditNow.Services\\AuditNow.Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Supreme\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.0-preview.2.24128.5\\microsoft.extensions.configuration.abstractions.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\Supreme\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.0-preview.2.24128.5\\microsoft.extensions.primitives.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\Supreme\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.5.0\\microsoft.identitymodel.abstractions.7.5.0.nupkg.sha512",
+    "C:\\Users\\Supreme\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.5.0\\microsoft.identitymodel.jsonwebtokens.7.5.0.nupkg.sha512",
+    "C:\\Users\\Supreme\\.nuget\\packages\\microsoft.identitymodel.logging\\7.5.0\\microsoft.identitymodel.logging.7.5.0.nupkg.sha512",
+    "C:\\Users\\Supreme\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.5.0\\microsoft.identitymodel.tokens.7.5.0.nupkg.sha512",
+    "C:\\Users\\Supreme\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.5.0\\system.identitymodel.tokens.jwt.7.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
