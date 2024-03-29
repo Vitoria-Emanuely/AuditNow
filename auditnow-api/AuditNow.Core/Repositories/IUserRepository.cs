@@ -1,4 +1,4 @@
-﻿    #region Using
+﻿#region Using
 using AuditNow.Core.Models;
 #endregion
 

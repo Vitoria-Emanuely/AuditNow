@@ -46,6 +46,8 @@ namespace AuditNow.Services
         {
             ReturnObject<User> ret = new ReturnObject<User>();
 
+            newUser.Password = new Cryptography().Encrypt(newUser.Password);
+
             await _unitOfWork.TbUser.AddAsync(newUser);
             await _unitOfWork.CommitAsync();
 

@@ -1,8 +1,4 @@
-﻿#region Using
-using System.ComponentModel.DataAnnotations.Schema;
-#endregion
-
-namespace AuditNow.Core.Models
+﻿namespace AuditNow.Core.Models
 {
     public abstract class BaseEntity
     {

@@ -4,7 +4,6 @@ using AuditNow.Core.Models.ValueObjects;
 using AuditNow.Core.Models;
 using AuditNow.Core.Services;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AuditNow.Api.Validators.User;
 #endregion

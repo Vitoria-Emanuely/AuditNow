@@ -1,7 +1,6 @@
 ﻿#region Using
 using AuditNow.Core.Models;
 using AuditNow.Core.Repositories;
-using Microsoft.EntityFrameworkCore;
 #endregion
 
 namespace AuditNow.Data.Repositories

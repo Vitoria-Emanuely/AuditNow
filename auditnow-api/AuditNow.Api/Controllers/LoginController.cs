@@ -1,9 +1,11 @@
-﻿using AuditNow.Api.Resources.User;
+﻿#region Using
+using AuditNow.Api.Resources.User;
 using AuditNow.Core.Models.ValueObjects;
 using AuditNow.Core.Models;
 using AuditNow.Core.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+#endregion
 
 namespace AuditNow.Api.Controllers
 {

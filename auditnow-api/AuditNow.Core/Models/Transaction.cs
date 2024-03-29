@@ -1,4 +1,6 @@
-﻿using AuditNow.Core.Models.Enums;
+﻿#region Using
+using AuditNow.Core.Models.Enums;
+#endregion
 
 namespace AuditNow.Core.Models
 {
@@ -8,9 +10,9 @@ namespace AuditNow.Core.Models
 
         public TransactionType TransactionType { get; set; }
 
-        public string Value { get; set; }
+        public double Value { get; set; }
 
-        public string Balance { get; set; }
+        public double Balance { get; set; }
 
         public int UserId { get; set; }
 

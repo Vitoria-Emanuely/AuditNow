@@ -20,6 +20,7 @@ namespace AuditNow.Api.Mapping
 
             // Resource to Domain
             CreateMap<TransactionResource, Transaction>();
+            CreateMap<CreateTransactionResource, Transaction>();
             CreateMap<UserResource, User>();
             CreateMap<CreateUserResource, User>();
             CreateMap<JwtTokenResource, JwtToken>();
