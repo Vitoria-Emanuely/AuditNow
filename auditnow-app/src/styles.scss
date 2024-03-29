@@ -1,0 +1,69 @@
+/* Importing Bootstrap SCSS file. */
+// @import '~bootstrap/scss/bootstrap';
+
+/* You can add global styles to this file, and also import other style files */
+.modal-holder {
+  animation-name: example;
+  animation-duration: 0.3s;
+}
+
+@keyframes example {
+  0% {
+    transform: scale(0.5)
+  }
+
+  100% {
+    transform: scale(1)
+  }
+}
+
+.btn-gray {
+  color: #fff !important;
+  background-color: #515151 !important;
+}
+
+.btn-dark-gray {
+  color: #fff !important;
+  background-color: #333333 !important;
+}
+
+.btn-white {
+  color: #333333 !important;
+  background-color: #fff !important;
+  border: 1px solid #515151 !important;
+}
+
+.div_button {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+//Buttons
+.btn-outline-light-gray {
+  border: 1px solid #838383 !important;
+  color: #838383 !important;
+  // width: 25% !important;
+}
+
+.btn-outline-light-gray:hover {
+  background-color: #838383 !important;
+  color: #fff !important;
+}
+
+.btn-soft-gray {
+  color: #272727 !important;
+  background-color: rgba(39, 39, 39, 0.1) !important;
+  border-color: transparent !important;
+  transition: all 0.5s ease !important;
+}
+
+.btn-soft-gray:hover {
+  color: #fff !important;
+  background-color: #272727 !important;
+  transition: all 0.5s ease !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}

@@ -1,0 +1,12 @@
+{
+    "HEADER": {
+        "LOGIN": {
+            "LOGOUT": "Sair"
+        }
+    },
+    "LOGIN": {
+        "PASSWORD": "Senha",
+        "BUTTON": "Entrar",
+        "ERROR": "Erro ao efetuar login. Tente novamente."
+    }
+}

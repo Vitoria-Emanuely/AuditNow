@@ -1,0 +1,74 @@
+.login {
+  height: 100vh;
+  background: linear-gradient(45deg, #6028a5, #925ade, #fefefe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-center {
+  height: 70vh;
+  background-color: #fefefe;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+}
+
+.login-img {
+  background-color: #6028a5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.form-control {
+  border-color: #6028a5 !important;
+  border-radius: 7px !important;
+}
+
+.auth-logo-dark {
+  height: 14vh;
+  max-width: 100%;
+}
+
+::-webkit-input-placeholder {
+  color: #6028a5 !important;
+  font-weight: 500;
+}
+
+input,
+input:focus {
+  font-weight: 500;
+  padding: 13px 12px;
+}
+
+.btn-login {
+  width: 100%;
+  border: 1px solid #fdfdfd;
+  border-radius: 7px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #fdfdfd;
+  background-color: #6028a5;
+  outline: none;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #fdfdfd;
+  color: #6028a5;
+  border-color: #6028a5;
+}
+
+.btn-login::-moz-focus-inner {
+  border: 0;
+}
