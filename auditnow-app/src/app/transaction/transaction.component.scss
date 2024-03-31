@@ -1,0 +1,40 @@
+.tab-filter {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    color: #fdfdfd;
+    background-color: #333333;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background-color: #6028a5;
+    color: #fdfdfd;
+    border: 0;
+}
+
+:host ::ng-deep .active > .page-link {
+    background-color: #333333;
+    border-color: #333333;
+}
+
+.btn-rounded {
+    border: 1px #6028a5 solid;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6028a5;
+    color: #fff;
+    font-size: 20px;
+}
+
+.plus {
+    color: green;
+}
+
+.subtraction {
+    color: red;
+}

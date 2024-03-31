@@ -3,10 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { AccordionModule } from 'ngx-bootstrap/accordion';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { ExtrapagesModule } from './extrapages/extrapages.module';
 import { LayoutsModule } from './layouts/layouts.module';
@@ -25,7 +22,6 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 if (environment.defaultauth === 'firebase') {
   initFirebaseBackend(environment.firebaseConfig);
 } else {
-  // tslint:disable-next-line: no-unused-expression
   FakeBackendInterceptor;
 }
 
@@ -51,9 +47,6 @@ export function createTranslateLoader(http: HttpClient): any {
     LayoutsModule,
     AppRoutingModule,
     ExtrapagesModule,
-    CarouselModule,
-    AccordionModule.forRoot(),
-    TabsModule.forRoot(),
     TooltipModule.forRoot(),
     ScrollToModule.forRoot(),
     ToastrModule.forRoot({
@@ -71,8 +64,6 @@ export function createTranslateLoader(http: HttpClient): any {
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'pt'},
-    // LoaderService,
-    // { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
   ],
 })
 export class AppModule { }

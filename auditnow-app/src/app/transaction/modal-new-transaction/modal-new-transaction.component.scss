@@ -1,0 +1,20 @@
+.btn-purple {
+    background-color: #fdfdfd;
+    color: #6028a5;
+    border: #6028a5 1px solid;
+}
+
+.btn-purple:hover {
+    background-color: #6028a5;
+    color: #fdfdfd;
+}
+
+::ng-deep {
+    .ng-select.ng-invalid.ng-touched .ng-select-container {
+        border-color: #f46a6a;
+    }
+
+    .ng-select.ng-invalid.ng-touched .ng-arrow-wrapper .ng-arrow {
+        border-color: #f46a6a transparent transparent
+    }
+}

@@ -4,7 +4,7 @@ export const MENU: MenuItem[] = [
     {
         id: 1,
         label: 'Transações',
-        icon: 'mdi mdi-vector-polygon',
+        icon: 'mdi mdi-cash-refund',
         link: '/transaction',
     }
 ];

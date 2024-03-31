@@ -1,1 +1,220 @@
-<p>transaction works!</p>
+<div class="container-fluid">
+  <div class="tab-filter" (click)="showFilter = !showFilter">
+    <i class="mdi mdi-filter-outline me-1"></i>
+    Filtro
+  </div>
+
+  <alert
+    *ngFor="let alert of alerts"
+    type="{{ alert.type }}"
+    [dismissible]="true"
+    role="alert"
+  >
+    <i class="{{ alert.icon }} me-2"></i>
+    {{ alert.message }}
+  </alert>
+
+  <div class="card" *ngIf="showFilter">
+    <div class="card-body">
+      <form
+        class="mt-2"
+        [formGroup]="form"
+        (ngSubmit)="filterTransactions()"
+        autocomplete="off"
+      >
+        <div class="row g-2 justify-content-center-md">
+          <div class="col-12 col-sm-3 col-md-2 col-lg-2">
+            <input
+              type="search"
+              class="form-control"
+              id="searchInput"
+              placeholder="Id"
+              formControlName="transactionId"
+              mask="0*"
+              maxlength="10"
+            />
+          </div>
+
+          <div class="col-12 col-sm-9 col-md-5 col-lg-5 mb-3">
+            <ng-select 
+            [items]="transactionType" 
+            bindLabel="description" 
+            bindValue="id" 
+            placeholder="Tipo de Transação"
+            formControlName="transactionType"
+            notFoundText="{{ 'MESSAGE.RESULT.NOT.FOUND' | translate }}" 
+            >
+                <ng-template ng-label-tmp let-item="item">
+                    <span>{{ ('TYPE.' + ( item.description | uppercase )) | translate }}</span>
+                </ng-template>
+
+                <ng-template ng-option-tmp let-item="item">
+                    <span>{{ ('TYPE.' + ( item.description | uppercase )) | translate }}</span>
+                </ng-template>
+            </ng-select>
+
+            
+          </div>
+
+          <div class="col-12 col-sm-3 col-md-3 col-lg-3">
+            <select class="form-select" formControlName="isActive">
+              <option value="" [selected]="true">Situação</option>
+              <option value="true">Ativo</option>
+              <option value="false">Inativo</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-sm-9 col-md-2 col-lg-2 ms-auto">
+            <div class="d-flex justify-content-between align-items-center">
+              <button
+                type="submit"
+                class="col-9 col-sm-10 col-md-9 btn btn-submit"
+              >
+                <i class="mdi mdi-filter-outline align-middle"></i>
+                Filtrar
+              </button>
+
+              <div class="bd-highlight col-auto col-md-auto col-sm-auto">
+                <button
+                  type="reset"
+                  class="btn btn-submit"
+                  placement="top"
+                  ngbTooltip="Limpar Filtro"
+                >
+                  <i class="mdi mdi-eraser-variant"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div
+    class="d-flex row bd-highlight justify-content-between align-items-center ps-4 pe-4 mb-3 mt-2"
+  >
+    <div class="me-auto ps-3 bd-highlight order-first col-9 col-md-8 col-sm-8">
+      <h5 class="mb-0 card-title cardTitle">
+        <i class="fa fa-money-bill-wave me-1"></i>
+        Transações
+      </h5>
+    </div>
+
+    <div
+      class="p-2 bd-highlight order-last order-md-0 col-md-auto col-sm-12 text-sm-center text-center"
+    >
+      <a
+        href="javascript:void(0);"
+        class="btn btn-submit"
+        (click)="openModalNewTransaction()"
+      >
+        <i class="fas fa-plus me-1"></i>
+        Nova Transação
+      </a>
+    </div>
+    <div class="p-2 bd-highlight col-auto col-md-auto col-sm-auto">
+      <a class="btn btn-light" (click)="filterTransactions()">
+        <i class="mdi mdi-refresh"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div
+      class="card col-10 col-sm-8 col-md-4 col-xxl-3"
+      *ngIf="transactions != null && transactions.length > 0"
+    >
+      <div class="card-body d-flex justify-content-center align-items-center">
+        <div class="btn-rounded"><i class="fa fa-dollar-sign"></i></div>
+        <h2 class="mx-2 mb-0">Saldo:</h2>
+        <h2 class="mb-0">
+          {{ transactions[0].balance | currency : "BRL" : "symbol" : "1.2-2" }}
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle nowrap">
+          <thead>
+            <tr>
+              <th scope="col" class="col-1">Id</th>
+              <th scope="col" class="col-3">Tipo de Transação</th>
+              <th scope="col" class="col-2">Valor</th>
+              <th scope="col" class="col-2">Saldo</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="transactions != null && returnedArray != null && transactions.length > 0">
+            <tr *ngFor="let transaction of returnedArray">
+              <th scope="row">{{ transaction.transactionId }}</th>
+              <td>
+                {{
+                  "TYPE." + transaction.transactionType | uppercase | translate
+                }}
+              </td>
+              <td [ngClass]="transaction.transactionType == 'Deposit' ? 'plus' : 'subtraction'">
+                {{ transaction.transactionType == 'Deposit' ? '+' : '-' }}
+                {{ transaction.value | currency : "BRL" : "symbol" : "1.2-2" }}
+              </td>
+              <td>
+                {{
+                  transaction.balance | currency : "BRL" : "symbol" : "1.2-2"
+                }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div
+          *ngIf="transactions == null || transactions.length == 0"
+          class="p-2"
+        >
+          <div>
+            <span>{{ "MESSAGE.RESULT.NOT.FOUND" | translate }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="row justify-content-between align-items-center"
+        *ngIf="!(transactions == null || transactions.length == 0)"
+      >
+        <div class="col-auto me-auto">
+          <p
+            [innerHtml]="
+              'LABELS.SHOWING.ENTRIES'
+                | translate
+                  : {
+                      value1: page,
+                      value2: endPage,
+                      value3: transactions.length
+                    }
+            "
+            class="text-muted mb-0"
+          ></p>
+        </div>
+        <div class="col-auto">
+          <div class="card d-inline-block ms-auto mb-0">
+            <div class="card-body p-2">
+              <nav aria-label="Page navigation example" class="mb-0">
+                <ul class="pagination mb-0">
+                  <pagination
+                    [previousText]="prevText"
+                    [nextText]="nextText"
+                    [totalItems]="contentArray.length"
+                    (pageChanged)="pageChanged($event)"
+                    [itemsPerPage]="itemsPerPage"
+                  >
+                  </pagination>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

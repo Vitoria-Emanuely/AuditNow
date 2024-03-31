@@ -1,0 +1,77 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">
+    <i class="bx bxs-edit-alt"></i>
+    Nova Transação
+  </h5>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="modal"
+    aria-label="Close"
+    id="close-modal"
+    (click)="modalService.hide()"
+  ></button>
+</div>
+<alert
+*ngFor="let alert of alerts"
+type="{{ alert.type }}"
+[dismissible]="true"
+role="alert"
+class="d-flex justify-content-center mt-3"
+>
+<i class="{{ alert.icon }} me-2"></i>
+{{ alert.message }}
+</alert>
+<form (ngSubmit)="createTransaction()" [formGroup]="form">
+  <div class="modal-body">
+    <div class="row g-2 mb-3">
+      <div class="col-6" *ngIf="getControl('value'); let control">
+        Valor
+        <span class="text-danger">*</span>
+
+        <input
+          type="text"
+          class="form-control"
+          formControlName="value"
+          autocomplete="new"
+          [ngClass]="{
+            'is-invalid': !control.untouched && control.invalid
+          }"
+          maxlength="100"
+          mask="separator.2" thousandSeparator="."
+          prefix="R$"
+        />
+      </div>
+
+      <div class="col-6" *ngIf="getControl('transactionType'); let control">
+        Tipo de Transação
+        <span class="text-danger">*</span>
+
+        <ng-select 
+                [items]="transactionType" 
+                bindLabel="description" 
+                bindValue="id" 
+                formControlName="transactionType"
+                notFoundText="{{ 'MESSAGE.RESULT.NOT.FOUND' | translate }}" 
+                [ngClass]="{
+                    'is-invalid': !control.untouched && control.invalid
+                }">
+                    <ng-template ng-label-tmp let-item="item">
+                        <span>{{ ('TYPE.' + ( item.description | uppercase )) | translate }}</span>
+                    </ng-template>
+
+                    <ng-template ng-option-tmp let-item="item">
+                        <span>{{ ('TYPE.' + ( item.description | uppercase )) | translate }}</span>
+                    </ng-template>
+                </ng-select>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer justify-content-end">
+    <button type="submit" class="btn btn-purple">
+      <i class="far fa-save me-1"></i>
+      Salvar
+    </button>
+  </div>
+</form>

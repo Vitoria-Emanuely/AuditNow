@@ -8,5 +8,13 @@
         "PASSWORD": "Senha",
         "BUTTON": "Entrar",
         "ERROR": "Erro ao efetuar login. Tente novamente."
-    }
+    },
+    "TYPE": {
+        "PURCHASE": "Compra",
+        "WITHDRAWAL": "Saque",
+        "DEPOSIT": "Depósito",
+        "TRANSACTION": "Tipo de Transação"
+    },
+    "LABELS.SHOWING.ENTRIES": "Mostrando <strong>{{value1}}</strong> até <strong>{{value2}}</strong> de <strong>{{value3}}</strong> Itens",
+    "MESSAGE.RESULT.NOT.FOUND": "Nenhum resultado encontrado"
 }
