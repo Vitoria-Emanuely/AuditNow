@@ -38,13 +38,13 @@ namespace AuditNow.Data.Repositories
         {
             IQueryable<Transaction> query = AuditNowDbContext.TbTransaction;
 
-            query = query.Where(p => p.UserId == transaction.UserId);
+            query = query.Where(p => p.UserId == requestUserId);
+
+            if (transaction.TransactionId > 0)
+                query = query.Where(p => p.TransactionId == transaction.TransactionId);
 
             if (transaction.TransactionType > 0)
                 query = query.Where(p => p.TransactionType == transaction.TransactionType);
-
-            if (requestUserId != null)
-                query = query.Where(p => p.UserId == requestUserId);
 
             //if (!string.IsNullOrEmpty(transaction.CreationDate))
             //    query = query.Where(p => p.TransactionName.Contains(transaction.TransactionName));

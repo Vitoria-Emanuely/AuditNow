@@ -45,23 +45,25 @@ namespace AuditNow.Services
         {
             ReturnObject<Transaction> ret = new ReturnObject<Transaction>();
 
+            
+
+            Transaction lastTransaction = _unitOfWork.TbTransaction.GetTransactionsByFilter(new Transaction(), true, newTransaction.UserId).FirstOrDefault();
+
             if (newTransaction.TransactionType == TransactionType.Deposit) 
             {
-                newTransaction.Balance += newTransaction.Value;
+                newTransaction.Balance = (lastTransaction.Balance == null ? 0 : lastTransaction.Balance) + newTransaction.Value;
             }
 
             if (newTransaction.TransactionType == TransactionType.Purchase || newTransaction.TransactionType == TransactionType.Withdrawal)
             {
-                TransactionCheck lastTransaction = CheckBalance(newTransaction);
-
-                if (!lastTransaction.HasBalance)
+                if (!CheckBalance(newTransaction))
                 {
                     ret.IsSuccessful = false;
                     ret.Message = "Não há saldo suficiente";
                     return ret;
                 }
 
-                newTransaction.Balance = lastTransaction.Transaction.Balance - newTransaction.Value;
+                newTransaction.Balance = lastTransaction.Balance - newTransaction.Value;
             }
 
             await _unitOfWork.TbTransaction.AddAsync(newTransaction);
@@ -94,31 +96,22 @@ namespace AuditNow.Services
         }
 
 
-        private TransactionCheck CheckBalance(Transaction transaction)
+        private bool CheckBalance(Transaction transaction)
         {
-            TransactionCheck ret = new TransactionCheck
-            {
-                Transaction = transaction,
-                HasBalance = true
-            };
-
-            transaction.TransactionType = 0;
-            List<Transaction> transactions = _unitOfWork.TbTransaction.GetTransactionsByFilter(transaction, true, transaction.UserId).ToList();
+            List<Transaction> transactions = _unitOfWork.TbTransaction.GetTransactionsByFilter(new Transaction(), true, transaction.UserId).ToList();
 
             if (transactions.Count == 0) {
-                ret.HasBalance = false;
+                return false;
             }
 
             if (transactions.Count > 0)
             {
-                if (transactions.LastOrDefault().Balance < transaction.Value)
+                if (transactions.FirstOrDefault().Balance < transaction.Value)
                 {
-                    ret.HasBalance = false;         }
+                    return false;         }
             }
 
-            ret.Transaction = transactions.LastOrDefault();
-
-            return ret;
+            return true;
         }
 
     }

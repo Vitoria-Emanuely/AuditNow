@@ -7,6 +7,7 @@ using AuditNow.Core.Models.ValueObjects;
 using AuditNow.Core.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.ObjectModel;
 #endregion
 
 namespace AuditNow.Api.Controllers
@@ -67,7 +68,7 @@ namespace AuditNow.Api.Controllers
 
 
         [HttpGet("find")]
-        public ActionResult<ReturnObject<TransactionResource>> GetTransactionByFilter([FromQuery] int transactionId, [FromQuery] int? transactionType, [FromQuery] string transactionDate, bool? isActive)
+        public ActionResult<ReturnObject<TransactionResource>> GetTransactionByFilter([FromQuery] int transactionId, [FromQuery] int transactionType, [FromQuery] bool? isActive)
         {
             if (requestUser == null) return Unauthorized();
 
@@ -89,6 +90,34 @@ namespace AuditNow.Api.Controllers
 
                 response.IsSuccessful = ret.IsSuccessful;
                 response.Message = ret.Message;
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+
+
+        [HttpGet("transactionTypes")]
+        public ActionResult<ReturnObject<BasicEntity>> GetTransactionsTypes()
+        {
+            if (requestUser == null) return Unauthorized();
+
+            try
+            {
+                ReturnObject<BasicEntity> response = new ReturnObject<BasicEntity>();
+
+                ICollection<BasicEntity> transactionTypes = new Collection<BasicEntity>();
+                var values = (TransactionType[])Enum.GetValues(typeof(TransactionType));
+                for (int i = 0; i < values.Length; i++)
+                {
+                    transactionTypes.Add(new BasicEntity { Id = values[i].GetHashCode(), Description = values[i].ToString() });
+                }
+
+                response.IsSuccessful = true;
+                response.Data = transactionTypes.ToList();
 
                 return Ok(response);
             }

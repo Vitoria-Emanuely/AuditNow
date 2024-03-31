@@ -9,7 +9,7 @@ namespace AuditNow.Api.Resources.Transaction
     {
         public int TransactionId { get; set; }
 
-        public TransactionType TransactionName { get; set; }
+        public TransactionType TransactionType { get; set; }
 
         public double Value { get; set; }
 
