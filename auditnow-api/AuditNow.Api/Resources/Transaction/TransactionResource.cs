@@ -20,5 +20,8 @@ namespace AuditNow.Api.Resources.Transaction
         public UserResource User { get; set; }
 
         public bool IsActive { get; set; }
+
+        public DateTime CreationDate { get; set; }
+
     }
 }

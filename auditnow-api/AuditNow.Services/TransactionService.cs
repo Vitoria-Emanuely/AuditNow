@@ -51,7 +51,7 @@ namespace AuditNow.Services
 
             if (newTransaction.TransactionType == TransactionType.Deposit) 
             {
-                newTransaction.Balance = (lastTransaction.Balance == null ? 0 : lastTransaction.Balance) + newTransaction.Value;
+                newTransaction.Balance = (lastTransaction == null ? 0 : lastTransaction.Balance) + newTransaction.Value;
             }
 
             if (newTransaction.TransactionType == TransactionType.Purchase || newTransaction.TransactionType == TransactionType.Withdrawal)
